@@ -201,4 +201,30 @@ export class SinglyLinkedList {
         // if you get here, the index is incorrect
         return null;
     }
+
+    reverse() {
+        var next;
+        var prev = null;
+        // save a refrence to head
+        var current = this.head;
+        // start reversing by setting tail to what head was referencing
+        this.tail = this.head;
+
+        // while current is truthy (not null)
+        while (current) {
+            // get a reference to the node after current
+            next = current.next;
+            // set next on current to prev
+            current.next = prev;
+            // move forward with the reverse
+            prev = current;
+            current = next;
+        }
+
+        // set head to prev
+        this.head = prev;
+
+        // return reference to self
+        return this;
+    }
 }
