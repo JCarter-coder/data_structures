@@ -112,4 +112,30 @@ export class SinglyLinkedList {
         // return a reference to itself for chaining
         return this;
     }
+
+    shift() {
+        // if the length of the list is 1 or less, use pop()
+        // pop() return null if the list is empty
+        if (this.length <= 1) return this.pop();
+
+        // save value for the node referenced by head
+        const value = this.head.val;
+        // set head to the second node in the list
+        this.head = this.head.next;
+        // decrement list length
+        this.length--;
+
+        // return saved value from former first element of the list
+        return value;
+    }
+
+    get(index) {
+        // used _getNodeAt() to get reference to node at index
+        const node = this._getNodeAt(index);
+        // if the index does not exist, return null
+        if (!node) return null;
+
+        // if the node exists, return value of node
+        return node.val;
+    }
 }
