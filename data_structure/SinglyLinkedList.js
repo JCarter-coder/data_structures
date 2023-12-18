@@ -71,7 +71,7 @@ export class SinglyLinkedList {
             value = this.head.val;
             // clear the list (pop)
             this.clear();
-            
+
             // return the saved value
             return value;
         }
@@ -90,5 +90,26 @@ export class SinglyLinkedList {
 
         // return value of last item
         return value;
+    }
+
+    unshift(val) {
+        // if the list is empty, push item into the list
+        if (!this.head) {
+            // return a reference to itself for chaining
+            return this. push(val);
+        }
+
+        // create a new node
+        const newNode = new Node(val);
+
+        // set the next of the new node to reference head
+        newNode.next = this.head;
+        // set head to reference the new node
+        this.head = newNode;
+        // increment list length
+        this.length++;
+        
+        // return a reference to itself for chaining
+        return this;
     }
 }
