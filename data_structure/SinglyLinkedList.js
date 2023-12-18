@@ -174,4 +174,31 @@ export class SinglyLinkedList {
             return this;
         }
     }
+
+    remove(index) {
+        // if the index that is being removed is the first one,
+        // shift it out and return
+        if (index === 0) return this.shift();
+        // if the index that is being removed is the last one,
+        // pop it out and return
+        if (index === this.length - 1) return this.pop();
+
+        //else, get a reference to the node before the one to be removed
+        const prevNode = this._getNodeAt(index - 1);
+        // if the node exists
+        if (prevNode) {
+            // save the value to return
+            var val = prevNode.next.val;
+            // change references such that it skips the node
+            // that is being removed
+            prevNode.next = prevNode.next.next;
+            // decrement list length
+            this.length--;
+
+            //return value of the node that was removed
+            return val;
+        }
+        // if you get here, the index is incorrect
+        return null;
+    }
 }
