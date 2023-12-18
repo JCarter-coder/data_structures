@@ -12,6 +12,9 @@ export class SinglyLinkedList {
         this.length = 0;
     }
 
+    // 'push' adds a value to the end of a list
+    // or it adds a value to an empty list
+    // and returns itself as a value
     push(val) {
         // create a new node with the given value
         const newNode = new Node(val);
@@ -33,12 +36,15 @@ export class SinglyLinkedList {
         return this;
     }
 
+    // 'clear' removes all references to Node
     clear() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-
+    
+    // '_getNodeAt is used within the class to return a reference to a 
+    // desired index of the list
     _getNodeAt(index) {
         // Make sure that the index is a number within range
         // otherwise return null
@@ -61,6 +67,7 @@ export class SinglyLinkedList {
         return curNode;
     }
 
+    // 'pop' removes the last item from the list and returns the value
     pop() {
         let value;
         // If list is empty return null
@@ -92,6 +99,7 @@ export class SinglyLinkedList {
         return value;
     }
 
+    // 'unshift' adds a value to the front of the list
     unshift(val) {
         // if the list is empty, push item into the list
         if (!this.head) {
@@ -113,6 +121,8 @@ export class SinglyLinkedList {
         return this;
     }
 
+    // 'shift' removes a node from the front of the list
+    // and returns its value
     shift() {
         // if the length of the list is 1 or less, use pop()
         // pop() return null if the list is empty
@@ -129,6 +139,7 @@ export class SinglyLinkedList {
         return value;
     }
 
+    // 'get' obtains the value of a node at an index
     get(index) {
         // used _getNodeAt() to get reference to node at index
         const node = this._getNodeAt(index);
@@ -139,6 +150,7 @@ export class SinglyLinkedList {
         return node.val;
     }
 
+    // 'set' changes the value of a node at an index
     set(index, val) {
         // used _getNodeAt() to get reference to node at index
         const node = this._getNodeAt(index);
@@ -151,6 +163,7 @@ export class SinglyLinkedList {
         return val;
     }
 
+    // 'insert' injects a node value into a list at an index
     insert(index, val) {
         // check to see if value is in range
         if (index < 0 || index > this.length) return null;
@@ -202,6 +215,7 @@ export class SinglyLinkedList {
         return null;
     }
 
+    // 'remove' a node from a list and return the value
     reverse() {
         var next;
         var prev = null;
