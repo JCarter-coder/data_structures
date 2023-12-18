@@ -138,4 +138,40 @@ export class SinglyLinkedList {
         // if the node exists, return value of node
         return node.val;
     }
+
+    set(index, val) {
+        // used _getNodeAt() to get reference to node at index
+        const node = this._getNodeAt(index);
+        // if the index does not exist, return null
+        if (!node) return null;
+        // update value of node
+        node.val = val;
+
+        // return value
+        return val;
+    }
+
+    insert(index, val) {
+        // check to see if value is in range
+        if (index < 0 || index > this.length) return null;
+        // if inserting at 0, unshift value onto list
+        if (index === 0) {
+            return this.unshift(val);
+        } else if (index === this.length) {
+            return this.push(val);
+        } else {
+            // create new node
+            const node = new Node(val);
+            // get reference to node right before index to insert at
+            const prev = this._getNodeAt(index - 1);
+            // wire the new node into the list
+            node.next = prev.next;
+            prev.next = node;
+            // increment the list length
+            this.length++;
+
+            // return a reference to self
+            return this;
+        }
+    }
 }
