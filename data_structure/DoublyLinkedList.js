@@ -162,4 +162,22 @@ export class DoublyLinkedList {
 
         return null;
     }
+
+    reverse() {
+        let current = this.head;
+        let tail = this.tail;
+        let temp;
+        while (current) {
+            temp = current.next;
+            current.next = current.prev;
+            current.prev = temp;
+            if (!temp) {
+                this.tail = this.head;
+                this.head = current;
+            }
+            current = temp;
+        }
+
+        return this;
+    }
 }
