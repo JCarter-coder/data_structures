@@ -43,7 +43,7 @@ export class SinglyLinkedList {
         this.length = 0;
     }
     
-    // '_getNodeAt is used within the class to return a reference to a 
+    // '_getNodeAt' is used within the class to return a reference to a 
     // desired index of the list
     _getNodeAt(index) {
         // Make sure that the index is a number within range
