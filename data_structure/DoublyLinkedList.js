@@ -13,6 +13,8 @@ export class DoublyLinkedList {
         this.length = 0;
     }
 
+    // 'push' adds a node at the end of the list and
+    // returns a reference to itself
     push(val) {
         let newNode = new Node(val);
         if (!this.head) {
@@ -28,12 +30,15 @@ export class DoublyLinkedList {
         return this;
     }
 
+    // 'clear' removes all references to Node
     clear() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
 
+    // '_getNodeAt' returns a reference to the node at the
+    // desired index. Should only be used within the class
     _getNodeAt(index) {
         if (typeof index !== 'number' || index >= this.length || index < 0) return null;
 
@@ -64,6 +69,8 @@ export class DoublyLinkedList {
         return curNode;
     }
 
+    // 'pop' removes the last item from the list and returns
+    // the value of that item
     pop() {
         let value;
         if (!this.head) return null;
@@ -83,6 +90,9 @@ export class DoublyLinkedList {
         return value;
     }
 
+    // 'unshift' adds a value to the front of the list and returns
+    // a reference to itself. Similar to 'push' which adds the
+    // value to the back of the list
     unshift(val) {
         if (!this.head) {
             return this.push(val);
@@ -98,6 +108,8 @@ export class DoublyLinkedList {
         return this;
     }
 
+    // 'shift' removes a node from the front of the list and
+    // returns its value
     shift() {
         if (this.length <= 1) return this.pop();
 
@@ -111,6 +123,9 @@ export class DoublyLinkedList {
         return value;
     }
 
+    // 'get' used to retrieve the value of a node at a given index
+    // in conjunction with the '_getNodeAt()' method. It returns
+    // the value at the index, else null if the index is not valid
     get(index) {
         let node = this._getNodeAt(index);
         if (!node) return null;
@@ -118,6 +133,8 @@ export class DoublyLinkedList {
         return node.val;
     }
 
+    // 'set' uses the '_getNodeAt()' method to establish a
+    // value at an index and returns that value, else null
     set(index, val) {
         let node = this._getNodeAt(index);
         if (!node) return null;
@@ -127,6 +144,8 @@ export class DoublyLinkedList {
         }
     }
 
+    // 'insert' will inject a node with a value at a specified
+    // index. It returns a reference to itself
     insert(index, val) {
         if (index < 0 || index > this.length) return null;
         if ( index === 0) { return this.unshift(val);}
@@ -143,6 +162,8 @@ export class DoublyLinkedList {
         }
     }
 
+    // 'remove' takes a node out of a list and returns the value
+    // of that node, else null if the index is invalid
     remove(index) {
         if (index === 0) return this.shift();
         if (index === this.length - 1) return this.pop();
@@ -163,6 +184,8 @@ export class DoublyLinkedList {
         return null;
     }
 
+    // 'reverse' will reverse the linked list and return a
+    // reference to itself
     reverse() {
         let current = this.head;
         let tail = this.tail;
